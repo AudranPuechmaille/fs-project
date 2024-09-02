@@ -10,39 +10,33 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
-public class UserController 
-{
+public class UserController {
     @Autowired
     private UserService userService;
 
     @GetMapping
-    public List<User> getAllUsers() 
-    {
+    public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable Long id) 
-    {
+    public User getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) 
-    {
-        return userService.saveUser(user);
+    public User createUser(@RequestBody User user) {
+        return userService.createUser(user);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User user) 
-    {
+    public User updateUser(@PathVariable Long id, @RequestBody User user) {
         user.setId(id);
-        return userService.saveUser(user);
+        return userService.updateUser(user);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) 
-    {
+    public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
 }

@@ -1,0 +1,21 @@
+services:
+  backend:
+    build: ./backend/demo
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:h2:tcp://db:9092/mem:testdb
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: password
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+
+  db:
+    image: buildo/h2database
+    ports:
+      - "9092:9092"

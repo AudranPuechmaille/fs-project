@@ -14,23 +14,23 @@ public class UserTypeService
     @Autowired
     private UserTypeRepository userTypeRepository;
 
-    public List<UserType> getAllUserTypes() 
-    {
+    public List<UserType> getAllUserTypes() {
         return userTypeRepository.findAll();
     }
 
-    public Optional<UserType> getUserTypeById(Long id) 
-    {
-        return userTypeRepository.findById(id);
+    public UserType getUserTypeById(Long id) {
+        return userTypeRepository.findById(id).orElse(null);
     }
 
-    public UserType saveUserType(UserType userType) 
-    {
+    public UserType createUserType(UserType userType) {
         return userTypeRepository.save(userType);
     }
 
-    public void deleteUserType(Long id) 
-    {
+    public UserType updateUserType(UserType userType) {
+        return userTypeRepository.save(userType);
+    }
+
+    public void deleteUserType(Long id) {
         userTypeRepository.deleteById(id);
     }
 }

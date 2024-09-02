@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+  <mat-form-field>
+    <input matInput placeholder="First Name" [(ngModel)]="user.firstName" name="firstName" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Last Name" [(ngModel)]="user.lastName" name="lastName" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="User Type" [(ngModel)]="user.userType" name="userType" required>
+      <mat-option *ngFor="let type of userTypes" [value]="type">{{type.type}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button type="submit">Save</button>
+</form>
+

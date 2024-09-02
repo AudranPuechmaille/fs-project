@@ -1,0 +1,7 @@
+<form (ngSubmit)="onSubmit()" #userTypeForm="ngForm">
+  <mat-form-field>
+    <input matInput placeholder="Type" [(ngModel)]="userType.type" name="type" required>
+  </mat-form-field>
+  <button mat-raised-button type="submit">Save</button>
+</form>
+
